@@ -1,0 +1,4 @@
+<li id="subject_<%= subject.id %>">
+<%= link_to subject.name, :action => 'show', :id => subject.id %>
+<%= "(#{subject.name.count})" -%>
+</li>

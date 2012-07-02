@@ -1,0 +1,36 @@
+<h1>Listing subject2s</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @subject2s.each do |subject2| %>
+  <tr>
+    <td><%= subject2.name %></td>
+    <td><%= link_to 'Show', subject2 %></td>
+    <td><%= link_to 'Edit', edit_subject2_path(subject2) %></td>
+    <td><%= link_to 'Destroy', subject2, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Subject2', new_subject2_path %>
+
+
+<p id="add_link"><%= link_to_function("Add a Subject",
+"Element.remove('add_link'); Element.show('add_subject')")%></p>
+
+<div id="add_subject" style="display:none;"></div>
+<%= form_tag(:url => {:action => 'create'},
+    :update => "subject_list", :position => :bottom,
+    :html => {:id => 'subject_form'})%>
+Name: <%= text_field "subject", "name" %>
+<%= submit_tag 'Add' %>
+<% end %>
+
